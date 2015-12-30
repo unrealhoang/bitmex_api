@@ -5,7 +5,6 @@ require 'tempfile'
 require 'typhoeus'
 require 'uri'
 require 'openssl'
-require 'pry'
 
 module BitmexApi
   class ApiClient
@@ -32,7 +31,6 @@ module BitmexApi
 
     def call_api(http_method, path, opts = {})
       request = build_request(http_method, path, opts)
-      binding.pry
       response = request.run
 
       # record as last response
