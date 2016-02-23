@@ -24,7 +24,7 @@ module BitmexApi
       if Configuration.debugging
         Configuration.logger.debug "Calling API: OrderApi#order_get_orders ..."
       end
-      
+
       # resource path
       path = "/order".sub('{format}','json')
 
@@ -55,7 +55,7 @@ module BitmexApi
 
       # http body (model)
       post_body = nil
-      
+
 
       auth_names = []
       result = @api_client.call_api(:GET, path,
@@ -86,16 +86,16 @@ module BitmexApi
       if Configuration.debugging
         Configuration.logger.debug "Calling API: OrderApi#order_new_order ..."
       end
-      
+
       # verify the required parameter 'symbol' is set
       fail "Missing the required parameter 'symbol' when calling order_new_order" if symbol.nil?
-      
+
       # verify the required parameter 'quantity' is set
       fail "Missing the required parameter 'quantity' when calling order_new_order" if quantity.nil?
-      
+
       # verify the required parameter 'price' is set
       fail "Missing the required parameter 'price' when calling order_new_order" if price.nil?
-      
+
       # resource path
       path = "/order".sub('{format}','json')
 
@@ -125,7 +125,7 @@ module BitmexApi
 
       # http body (model)
       post_body = nil
-      
+
 
       auth_names = []
       result = @api_client.call_api(:POST, path,
@@ -152,7 +152,7 @@ module BitmexApi
       if Configuration.debugging
         Configuration.logger.debug "Calling API: OrderApi#order_cancel_order ..."
       end
-      
+
       # resource path
       path = "/order".sub('{format}','json')
 
@@ -178,7 +178,7 @@ module BitmexApi
 
       # http body (model)
       post_body = nil
-      
+
 
       auth_names = []
       result = @api_client.call_api(:DELETE, path,
@@ -195,7 +195,7 @@ module BitmexApi
     end
 
     # Cancels all of your orders.
-    # 
+    #
     # @param [Hash] opts the optional parameters
     # @option opts [String] :symbol Optional symbol. If provided, only cancels orders for that symbol.
     # @option opts [String] :filter Optional filter for cancellation. Use to only cancel some orders, e.g. `{\&quot;side\&quot;: \&quot;Buy\&quot;}`.
@@ -205,7 +205,7 @@ module BitmexApi
       if Configuration.debugging
         Configuration.logger.debug "Calling API: OrderApi#order_cancel_all ..."
       end
-      
+
       # resource path
       path = "/order/all".sub('{format}','json')
 
@@ -231,7 +231,7 @@ module BitmexApi
 
       # http body (model)
       post_body = nil
-      
+
 
       auth_names = []
       result = @api_client.call_api(:DELETE, path,
@@ -256,10 +256,10 @@ module BitmexApi
       if Configuration.debugging
         Configuration.logger.debug "Calling API: OrderApi#order_cancel_all_after ..."
       end
-      
+
       # verify the required parameter 'timeout' is set
       fail "Missing the required parameter 'timeout' when calling order_cancel_all_after" if timeout.nil?
-      
+
       # resource path
       path = "/order/cancelAllAfter".sub('{format}','json')
 
@@ -283,7 +283,7 @@ module BitmexApi
 
       # http body (model)
       post_body = nil
-      
+
 
       auth_names = []
       result = @api_client.call_api(:POST, path,
@@ -309,10 +309,10 @@ module BitmexApi
       if Configuration.debugging
         Configuration.logger.debug "Calling API: OrderApi#order_close_position ..."
       end
-      
+
       # verify the required parameter 'symbol' is set
       fail "Missing the required parameter 'symbol' when calling order_close_position" if symbol.nil?
-      
+
       # resource path
       path = "/order/closePosition".sub('{format}','json')
 
@@ -337,7 +337,7 @@ module BitmexApi
 
       # http body (model)
       post_body = nil
-      
+
 
       auth_names = []
       result = @api_client.call_api(:POST, path,
@@ -354,7 +354,7 @@ module BitmexApi
     end
 
     # Get open liquidation orders.
-    # 
+    #
     # @param [Hash] opts the optional parameters
     # @option opts [String] :filter Filter. For example, send {\&quot;symbol\&quot;: \&quot;XBT24H\&quot;}.
     # @return [Array<LiquidationOrder>]
@@ -362,7 +362,7 @@ module BitmexApi
       if Configuration.debugging
         Configuration.logger.debug "Calling API: OrderApi#order_get_close_out_orders ..."
       end
-      
+
       # resource path
       path = "/order/liquidations".sub('{format}','json')
 
@@ -386,7 +386,7 @@ module BitmexApi
 
       # http body (model)
       post_body = nil
-      
+
 
       auth_names = []
       result = @api_client.call_api(:GET, path,
