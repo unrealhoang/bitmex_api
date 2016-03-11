@@ -80,9 +80,9 @@ module BitmexApi
       end
 
       {
-        "api-nonce": nonce,
-        "api-key": Configuration.api_key,
-        "api-signature": signature
+        "api-nonce" => nonce,
+        "api-key" => Configuration.api_key,
+        "api-signature" => signature
       }
     end
 
