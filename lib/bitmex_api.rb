@@ -51,6 +51,7 @@ require 'bitmex_api/api/execution_api'
 require 'bitmex_api/api/chat_api'
 require 'bitmex_api/api/instrument_api'
 require 'bitmex_api/api/stats_api'
+require 'bitmex_api/api/sub_account_api'
 
 module BitmexApi
   class << self
