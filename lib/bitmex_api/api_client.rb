@@ -58,7 +58,7 @@ module BitmexApi
 
     def build_auth_header(http_method, path, query, data)
       if @access_token
-        return { "AccessToken": @access_token }
+        return { "AccessToken" => @access_token }
       end
       http_method = http_method.to_s.upcase
       nonce = (Time.now.to_f * 1000).to_i
