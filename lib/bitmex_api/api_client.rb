@@ -18,8 +18,9 @@ module BitmexApi
 
     # Stores the HTTP response from the last API call using this API client.
     attr_accessor :last_response
+    attr_accessor :access_token
 
-    def initialize(host = nil)
+    def initialize(host = nil, access_token = nil)
       @host = host || Configuration.base_url
       @format = 'json'
       @user_agent = "ruby-swagger-#{VERSION}"
@@ -27,6 +28,7 @@ module BitmexApi
         'Content-Type' => "application/#{@format.downcase}",
         'User-Agent' => @user_agent
       }
+      @access_token = access_token
     end
 
     def call_api(http_method, path, opts = {})
@@ -54,9 +56,15 @@ module BitmexApi
       end
     end
 
-    def build_auth_header(http_method, path, data)
+    def build_auth_header(http_method, path, query, data)
+      if @access_token
+        return { "AccessToken": @access_token }
+      end
       http_method = http_method.to_s.upcase
       nonce = (Time.now.to_f * 1000).to_i
+      query_string = "?" + URI.encode_www_form(query)
+      path = path + query_string if query_string.length > 1
+
       request_path = (Configuration.base_path + path).gsub(/\/+/, '/')
 
       signature = OpenSSL::HMAC.hexdigest(
@@ -116,7 +124,7 @@ module BitmexApi
           Configuration.logger.debug "HTTP request body param ~BEGIN~\n#{body}\n~END~\n"
         end
       end
-      req_opts[:headers].merge!(build_auth_header(http_method, path, body))
+      req_opts[:headers].merge!(build_auth_header(http_method, path, query_params, body))
       if Configuration.debugging
         Configuration.logger.debug "HTTP request header params ~BEGIN~\n#{req_opts[:headers]}\n~END~\n"
       end
