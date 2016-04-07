@@ -61,6 +61,53 @@ module BitmexApi
       return result
     end
 
+    def position_leverage(symbol, leverage)
+      if Configuration.debugging
+        Configuration.logger.debug "Calling API: PositionApi#position_isolate_margin ..."
+      end
+      
+      # verify the required parameter 'symbol' is set
+      fail "Missing the required parameter 'symbol' when calling position_isolate_margin" if symbol.nil?
+      
+      # resource path
+      path = "/position/leverage".sub('{format}','json')
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+
+      # HTTP header 'Accept' (if needed)
+      _header_accept = ['application/json', 'application/xml', 'text/xml', 'application/javascript', 'text/javascript']
+      _header_accept_result = @api_client.select_header_accept(_header_accept) and header_params['Accept'] = _header_accept_result
+
+      # HTTP header 'Content-Type'
+      _header_content_type = ['application/json', 'application/x-www-form-urlencoded']
+      header_params['Content-Type'] = @api_client.select_header_content_type(_header_content_type)
+
+      # form parameters
+      form_params = {}
+      form_params["symbol"] = symbol
+      form_params["leverage"] = leverage
+
+      # http body (model)
+      post_body = nil
+
+      auth_names = []
+      result = @api_client.call_api(:POST, path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'Position')
+      if Configuration.debugging
+        Configuration.logger.debug "API called: PositionApi#position_leverage. Result: #{result.inspect}"
+      end
+      return result
+    end
+
     # Toggle isolated (fixed) margin per-position.
     # On Speculative (DPE-Enabled) contracts, users can switch isolate margin per-position. This function allows switching margin isolation (aka fixed margin) on and off. A position must be open to isolate it.
     # @param symbol Position symbol to isolate.
