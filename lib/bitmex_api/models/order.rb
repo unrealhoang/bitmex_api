@@ -119,7 +119,7 @@ module BitmexApi
         :'multi_leg_reporting_type' => :'String',
         :'text' => :'String',
         :'transact_time' => :'Date',
-        :'timestamp' => :'Date'
+        :'timestamp' => :'Time'
         
       }
     end
