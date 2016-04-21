@@ -118,9 +118,8 @@ module BitmexApi
         :'avg_px' => :'Float',
         :'multi_leg_reporting_type' => :'String',
         :'text' => :'String',
-        :'transact_time' => :'Date',
-        :'timestamp' => :'Time'
-        
+        :'transact_time' => :'DateTime',
+        :'timestamp' => :'DateTime'
       }
     end
 
