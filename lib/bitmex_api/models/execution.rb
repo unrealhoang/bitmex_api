@@ -178,8 +178,8 @@ module BitmexApi
         :'exec_comm' => :'Float',
         :'home_notional' => :'Float',
         :'foreign_notional' => :'Float',
-        :'transact_time' => :'Date',
-        :'timestamp' => :'Date'
+        :'transact_time' => :'DateTime',
+        :'timestamp' => :'DateTime'
         
       }
     end
